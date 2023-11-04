@@ -102,35 +102,35 @@ const mutation = new GraphQLObjectType({
 				return Client.findByIdAndRemove(args.id);
 			},
 		},
-		// addProject: {
-		// 	type: ProjectType,
-		// 	args: {
-		// 		name: { type: GraphQLNonNull(GraphQLString) },
-		// 		description: { type: GraphQLNonNull(GraphQLString) },
-		// 		status: {
-		// 			type: new GraphQLEnumType({
-		// 				name: "Project Status",
-		// 				values: {
-		// 					new: { value: "Not Started" },
-		// 					progress: { value: "In Progress" },
-		// 					completed: { value: "Completed" },
-		// 				},
-		// 			}),
-		// 			defaultValue: "Not Started",
-		// 		},
-		// 		clientId: { type: GraphQLNonNull(GraphQLID) },
-		// 	},
-		// 	resolve(parent, args) {
-		// 		const project = new Project({
-		// 			name: args.name,
-		// 			description: args.description,
-		// 			status: args.status,
-		// 			clientId: args.clientId,
-		// 		});
+		addProject: {
+			type: ProjectType,
+			args: {
+				name: { type: GraphQLNonNull(GraphQLString) },
+				description: { type: GraphQLNonNull(GraphQLString) },
+				status: {
+					type: new GraphQLEnumType({
+						name: "Project Status",
+						values: {
+							new: { value: "Not Started" },
+							progress: { value: "In Progress" },
+							completed: { value: "Completed" },
+						},
+					}),
+					defaultValue: "Not Started",
+				},
+				clientId: { type: GraphQLNonNull(GraphQLID) },
+			},
+			resolve(parent, args) {
+				const project = new Project({
+					name: args.name,
+					description: args.description,
+					status: args.status,
+					clientId: args.clientId,
+				});
 
-		// 		return project.save();
-		// 	},
-		// },
+				return project.save();
+			},
+		},
 	},
 });
 
