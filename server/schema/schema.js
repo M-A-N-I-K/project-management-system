@@ -77,6 +77,7 @@ const RootQuery = new GraphQLObjectType({
 const mutation = new GraphQLObjectType({
 	name: "Mutation",
 	fields: {
+		// Add client
 		addClient: {
 			type: ClientType,
 			args: {
@@ -93,6 +94,7 @@ const mutation = new GraphQLObjectType({
 				return client.save();
 			},
 		},
+		// Delete Client
 		deleteClient: {
 			type: ClientType,
 			args: {
@@ -102,6 +104,7 @@ const mutation = new GraphQLObjectType({
 				return Client.findByIdAndRemove(args.id);
 			},
 		},
+		// Add project
 		addProject: {
 			type: ProjectType,
 			args: {
@@ -131,6 +134,7 @@ const mutation = new GraphQLObjectType({
 				return project.save();
 			},
 		},
+		// Delete Project
 		deleteProject: {
 			type: ProjectType,
 			args: {
@@ -140,6 +144,7 @@ const mutation = new GraphQLObjectType({
 				return Project.findByIdAndRemove(args.id);
 			},
 		},
+		// Update project
 		updateProject: {
 			type: ProjectType,
 			args: {
