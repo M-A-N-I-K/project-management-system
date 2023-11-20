@@ -1,15 +1,6 @@
-import { gql, useQuery } from "@apollo/client"
+import { useQuery } from "@apollo/client"
+import { GET_CLIENTS } from "../queries/ClientQueries";
 import ClientRow from "./ClientRow";
-
-const GET_CLIENTS = gql`
-    query getClients {
-        clients {
-            id
-            name
-            email
-            phone
-        }
-}`
 
 function Clients() {
     const { loading, error, data } = useQuery(GET_CLIENTS);
@@ -30,7 +21,7 @@ function Clients() {
                         </thead>
                         <tbody>
                             {data.clients.map(client => (
-                                <ClientRow key={client.id} client={client}/>
+                                <ClientRow key={client.id} client={client} />
                             ))}
                         </tbody>
                     </table>
