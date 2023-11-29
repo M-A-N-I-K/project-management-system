@@ -7,8 +7,7 @@ function AddClientModal() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
         console.log(email, phone, name);
     }
 
@@ -31,7 +30,7 @@ function AddClientModal() {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <form onSubmit={onSubmit}>
+                            <form >
                                 <div className="mb-3">
 
                                     <label className='form-label'>Name</label>
@@ -47,7 +46,7 @@ function AddClientModal() {
                                     <label className='form-label'>Phone</label>
                                     <input type="text" className="form-control" value={phone} onChange={(e) => setPhone(e.target.value)} />
                                 </div>
-                                <button type='submit' className="btn btn-secondary" data-dismiss="modal">
+                                <button onClick={handleSubmit} type='button' className="btn btn-secondary" data-dismiss="modal">
                                     Submit
                                 </button>
                             </form>
