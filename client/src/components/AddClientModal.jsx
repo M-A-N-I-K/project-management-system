@@ -1,15 +1,45 @@
 import { useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { useMutation } from '@apollo/client'
+import { ADD_CLIENT } from '../mutations/ClientMutations';
+import { GET_CLIENTS } from '../queries/ClientQueries';
 
 function AddClientModal() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
 
-    const handleSubmit = () => {
-        console.log(email, phone, name);
+    const [addClient] = useMutation(ADD_CLIENT,
+        {
+            variables: { name, email, phone },
+            update(cache, { data: { addClient } }) {
+                const { clients } = cache.readQuery({ query: GET_CLIENTS });
+                cache.writeQuery({
+                    query: GET_CLIENTS,
+                    data: { clients: [...clients, addClient] }
+                })
+            },
+            onError(error) {
+                console.error("Mutation error:", error);
+                alert("Failed to add Client");
+                return;
+            }
+        });
+
+    const handleSubmit = async () => {
+        try {
+            await addClient();
+            console.log(email, phone, name);
+            setName("");
+            setEmail("");
+            setPhone("");
+            alert("Client added successfully!");
+        }
+        catch (err) {
+            console.log(err.message);
+        }
     }
+
 
     return (
         <>
@@ -24,7 +54,7 @@ function AddClientModal() {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="addClientModalLabel">Add Client Modal</h5>
+                            <h5 className="modal-title" id="addClientModalLabel">Add Client</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
