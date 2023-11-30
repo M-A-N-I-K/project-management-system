@@ -28,7 +28,10 @@ function AddClientModal() {
 
     const handleSubmit = async () => {
         try {
-            await addClient();
+            if (email === "" || name === "" || phone === "") {
+                return alert("All fields Required!");
+            }
+            await addClient(email, phone, name);
             console.log(email, phone, name);
             setName("");
             setEmail("");

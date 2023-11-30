@@ -1,4 +1,4 @@
-
+import Src from "../assets/icon2.png"
 
 export default function Header() {
     return (
@@ -6,8 +6,8 @@ export default function Header() {
             <div className="container">
                 <a href="/" className="navbar-brand">
                     <div className="d-flex">
-                        <img src="" alt="" />
-                        <div>ProjectMgmt</div>
+                        <img src={Src} alt="ProjeX." />
+                        <div>ProjeX</div>
                     </div>
                 </a>
             </div>
