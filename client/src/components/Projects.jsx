@@ -1,4 +1,4 @@
-import  Spinner  from "./Spinner"
+import Spinner from "./Spinner"
 import { useQuery } from "@apollo/client"
 import { GET_PROJECTS } from "../queries/ProjectQueries"
 import ProjectCard from "./ProjectCard"
@@ -10,13 +10,13 @@ function Projects() {
     return (
         <>
             {
-            data.projects.length > 0 ? (
-                <div className="row">
-                    {data.projects.map((project) => (<ProjectCard key={project.id} project={project}/>))}
-                </div>
-            ) : 
-            (<p>No Projects </p>) 
-        }
+                data.projects.length > 0 ? (
+                    <div className="row mt-3">
+                        {data.projects.map((project) => (<ProjectCard key={project.id} project={project} />))}
+                    </div>
+                ) :
+                    (<p>No Projects </p>)
+            }
         </>
     )
 }
