@@ -32,7 +32,6 @@ function AddClientModal() {
                 return alert("All fields Required!");
             }
             await addClient(email, phone, name);
-            console.log(email, phone, name);
             setName("");
             setEmail("");
             setPhone("");

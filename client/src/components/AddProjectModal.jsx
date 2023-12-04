@@ -33,11 +33,10 @@ function AddProjectModal() {
 
     const handleSubmit = async () => {
         try {
-            if (email === "" || description === "" || status === "") {
+            if (name === "" || description === "" || status === "") {
                 return alert("All fields Required!");
             }
-            await addProject(email, description, status, clientId);
-            console.log(email, description, status, clientId);
+            await addProject(name, description, status, clientId);
             setName("");
             setDescription("");
             setStatus("new");
