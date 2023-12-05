@@ -4,6 +4,7 @@ import { useMutation, useQuery } from '@apollo/client'
 import { ADD_PROJECT } from '../mutations/projectMutations'
 import { GET_PROJECTS } from '../queries/ProjectQueries'
 import { GET_CLIENTS } from '../queries/ClientQueries';
+import "../index.css";
 
 function AddProjectModal() {
     const [name, setName] = useState("");
@@ -89,7 +90,7 @@ function AddProjectModal() {
                                                 <label className='form-label'>Status</label>
                                                 <select
                                                     id='status'
-                                                    className='form-select'
+                                                    className='form-select form-select-lg'
                                                     value={status}
                                                     onChange={(e) => setStatus(e.target.value)}
                                                 >
@@ -102,7 +103,7 @@ function AddProjectModal() {
                                             <div className="mb-3">
                                                 <label className='form-label'>Client</label>
                                                 <select
-                                                    id='status'
+                                                    id='client'
                                                     className='form-select'
                                                     value={clientId}
                                                     onChange={(e) => setClientId(e.target.value)}
