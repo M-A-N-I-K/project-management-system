@@ -1,5 +1,5 @@
 import Header from "./components/Header"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { HashRouter as Router, Route, Routes } from "react-router-dom"
 import { ApolloProvider, InMemoryCache, ApolloClient } from "@apollo/client"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
