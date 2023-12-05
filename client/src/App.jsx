@@ -25,7 +25,7 @@ const cache = new InMemoryCache({
 })
 
 const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql",
+  uri: import.meta.env.VITE_API_KEY,
   cache
 })
 
@@ -39,8 +39,8 @@ function App() {
           <div className="container">
             <Routes>
               <Route index path="/" element={<Home />} />
-              <Route index path="/projects/:id" element={<Project/>} />
-              <Route path="*" element={<NotFound/>}/>
+              <Route index path="/projects/:id" element={<Project />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </Router>
